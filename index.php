@@ -13,7 +13,7 @@ require 'db_conn.php';
 <body>
     <div class="main-section">
        <div class="add-section">
-          <form action="app/add.php" method="POST" autocomplete="off">
+          <form action="app/create.php" method="POST" autocomplete="off">
              <?php if(isset($_GET['mess']) && $_GET['mess'] == 'error'){ ?>
                 <input type="text" 
                      name="title" 
@@ -49,7 +49,8 @@ require 'db_conn.php';
                     <button id="<?php echo $todo->id; ?>" class="delete-btn">Delete</button>
                     <button class="edit-btn">Edit</button>
                     <?php if ($todo->checked) { ?>
-                        <input type="checkbox" class="check-box" data-todo-id="<?php echo $todo->id; ?>" checked />                     
+                        <input type="checkbox" class="check-box" data-todo-id="<?php echo $todo->id; ?>" checked />
+                        <h2 class="checked"><?php echo $todo->title ?></h2>                     
                     <?php } else { ?>
                         <input type="checkbox" data-todo-id="<?php echo $todo->id; ?>" class="check-box" />                       
                     <?php } ?>
