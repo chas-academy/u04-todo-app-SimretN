@@ -34,11 +34,14 @@ document.addEventListener('DOMContentLoaded', function () {
         xhr.onreadystatechange = function () {
           if (xhr.readyState === 4 && xhr.status === 200) {
             let h2 = checkBox.nextElementSibling;
+            let desc = h2.nextElementSibling;
             if (xhr.responseText !== 'error') {
                if (xhr.responseText === '1') {
                  h2.classList.remove('checked');
+                 desc.classList.remove('checked');
                } else {
                  h2.classList.add('checked');
+                 desc.classList.add('checked');
                }
              }
            }

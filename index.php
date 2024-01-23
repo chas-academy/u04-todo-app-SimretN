@@ -50,11 +50,10 @@ require 'db_conn.php';
                     <button class="edit-btn">Edit</button>
                     <?php if ($todo->checked) { ?>
                         <input type="checkbox" class="check-box" data-todo-id="<?php echo $todo->id; ?>" checked />
-                        <h2 class="checked"><?php echo $todo->title ?></h2>                     
-                    <?php } else { ?>
+                        <?php } else { ?>
                         <input type="checkbox" data-todo-id="<?php echo $todo->id; ?>" class="check-box" />                       
                     <?php } ?>
-                    <br>
+                  
                     <h2><?php echo $todo->title ?></h2>
                     <p><?php echo $todo->taskDescription ?></p>
                     <br>
