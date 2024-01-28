@@ -20,22 +20,23 @@ require 'db_conn.php';
                      style="border-color: #ff6666"
                      placeholder="This field is required" />
                      <input type="text" name="taskDescription" style="text-align: center; border-color: #ff6666" placeholder="Description">
-              <button type="submit">Add &nbsp; <span>&#43;</span></button>
+              <!-- <button type="submit">Add &nbsp; <span>&#43;</span></button> -->
 
              <?php }else{ ?>
               <input type="text" 
                      name="title" 
                      placeholder="What do you need to do?" />
                      <input type="text" name="taskDescription" style="text-align: center;" placeholder="Description">
-              <button type="submit">Add &nbsp; <span>&#43;</span></button>
+              <!-- <button type="submit">Add &nbsp; <span>&#43;</span></button> -->
              <?php } ?>
+             <button type="submit">Add &nbsp; <span>&#43;</span></button>
           </form>
        </div>
        <?php 
           $todos = $conn->query("SELECT * FROM todos ORDER BY id DESC");
        ?>
        <div class="show-todo-section">
-            <?php if($todos->rowCount() <= 0){ ?>
+            <?php if($todos->rowCount() == 0){ ?>
                 <div class="todo-item">
                     <div class="empty">
                         <img src="img/f.png" width="100%" />
@@ -47,7 +48,8 @@ require 'db_conn.php';
             <?php while ($todo = $todos->fetch(PDO::FETCH_OBJ)) { ?>
                 <div class="todo-item">
                     <button id="<?php echo $todo->id; ?>" class="delete-btn">Delete</button>
-                    <button class="edit-btn">Edit</button>
+                    <!-- <button class="edit-btn">&nbsp; Edit</button> -->
+                    <button id="<?php echo $todo->id; ?> " class="edit-btn">Edit</button>
                     <?php if ($todo->checked) { ?>
                         <input type="checkbox" class="check-box" data-todo-id="<?php echo $todo->id; ?>" checked />
                         <?php } else { ?>

@@ -4,11 +4,13 @@ document.addEventListener('DOMContentLoaded', function () {
     deleteButtons.forEach(function (button) {
       button.addEventListener('click', function () {
         let id = this.id;
-  
+
+      // XMLHttpRequest to send a POST request to delete.php
         let xhr = new XMLHttpRequest();
         xhr.open('POST', 'app/delete.php', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  
+        
+      // Callback function for handling the response
         xhr.onreadystatechange = function () {
           if (xhr.readyState === 4 && xhr.status === 200) {
             if (xhr.responseText) {
@@ -26,13 +28,16 @@ document.addEventListener('DOMContentLoaded', function () {
     checkBoxes.forEach(function (checkBox) {
       checkBox.addEventListener('click', function (e) {
         var id = this.getAttribute('data-todo-id');
-  
+
+      // XMLHttpRequest to send a POST request to checkBox.php
         let xhr = new XMLHttpRequest();
         xhr.open('POST', 'app/checkBox.php', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
   
         xhr.onreadystatechange = function () {
           if (xhr.readyState === 4 && xhr.status === 200) {
+
+             // Update the styling of the to-do based on the response
             let h2 = checkBox.nextElementSibling;
             let desc = h2.nextElementSibling;
             if (xhr.responseText !== 'error') {
@@ -63,7 +68,8 @@ document.addEventListener('DOMContentLoaded', function () {
         let todoTitle = todoItem.querySelector('h2').innerText;
         let todoDescription = todoItem.querySelector('p').innerText;
         let todoChecked = todoItem.querySelector('.check-box').checked;
-  
+
+        // Prompt the user to edit the title and description
         let newTitle = prompt('Edit title:', todoTitle);
         let newTodoDescription  = prompt('Edit description:', todoDescription);
         if (newTitle !== null && newTodoDescription !== null) {
@@ -82,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
               }
             }
           };
-  
+        // Send the updated information to the server
           xhr.send('id=' + todoId + '&title=' + encodeURIComponent(newTitle) + '&taskDescription='+ encodeURIComponent(newTodoDescription) + '&checked=' + (todoChecked ? 1 : 0));
         }
      }
