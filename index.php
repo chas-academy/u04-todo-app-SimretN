@@ -20,14 +20,12 @@ require 'db_conn.php';
                      style="border-color: #ff6666"
                      placeholder="This field is required" />
                      <input type="text" name="taskDescription" style="text-align: center; border-color: #ff6666" placeholder="Description">
-              <!-- <button type="submit">Add &nbsp; <span>&#43;</span></button> -->
-
+                     
              <?php }else{ ?>
               <input type="text" 
                      name="title" 
                      placeholder="What do you need to do?" />
                      <input type="text" name="taskDescription" style="text-align: center;" placeholder="Description">
-              <!-- <button type="submit">Add &nbsp; <span>&#43;</span></button> -->
              <?php } ?>
              <button type="submit">Add &nbsp; <span>&#43;</span></button>
           </form>
